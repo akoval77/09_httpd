@@ -9,7 +9,7 @@ import signal
 import sys
 from mimetypes import guess_type
 import traceback
-from datetime import datetime
+from datetime import datetime, timezone
 
 MAXLINE = 65536
 CRLF = b'\r\n'
@@ -32,7 +32,7 @@ class HTTPBadRequest(Exception):
 def send_error(conn, code, message, detail=None):
     response = f"{HTTP_VERSION} {code} {message}\r\n"
     response += "Server: Dummy OTUS server\r\n"
-    dt = httpdate(datetime.utcnow())
+    dt = httpdate(datetime.now(timezone.utc))
     response += f"Date: {dt}\r\n"
     response += "Connection: close\r\n\r\n"
     if detail:
@@ -174,7 +174,7 @@ def main():
     parser = argparse.ArgumentParser()
     # Добавляем аргумент -w для указания количества обработчиков
     parser.add_argument("-w", type=int, default=4, help="number of workers")
-    parser.add_argument('-r', type=str, default=r'D:\work\python\PycharmProjects\http-test-suite', help='Path to document directory')
+    parser.add_argument('-r', type=str, default=r'./http-test-suite', help='Path to document directory')
 
     # Разбираем аргументы
     args = parser.parse_args()
