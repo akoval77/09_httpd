@@ -99,7 +99,7 @@ def send_response(conn, file_path, send_body):
     if send_body:
         send_file_content(conn, file_path)
 
-    time.sleep(0.5)
+    # time.sleep(0.5)
     # закрываем соединение
     conn.close()
 
@@ -156,7 +156,7 @@ def process_connections(s, doc_root):
         # Печатаем адрес клиента
         print(f"Accepted connection from {addr}")
         handle_request(conn, addr, doc_root)
-        time.sleep(0.1)
+        # time.sleep(0.1)
 
 
 def signal_handler(sig, frame):

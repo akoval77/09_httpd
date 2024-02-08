@@ -37,8 +37,8 @@ jobs:
         owner: 's-stupnikov'
         repository: 'http-test-suite'
 
-    - name: Access cloned repository content
+    - name: Run server and integration tests
       run: |
-        ls -la        
+        python httpd -w 4 -r ./http-test-suite
         cd http-test-suite
-        ls -la
+        python httptest.py
