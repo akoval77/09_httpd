@@ -33,7 +33,7 @@ jobs:
       uses: GuillaumeFalourd/clone-github-repo-action@v2.3
       with:
         depth: 1
-        branch: 'main'
+        branch: 'master'
         owner: 's-stupnikov'
         repository: 'http-test-suite'
 
