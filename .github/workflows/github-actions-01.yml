@@ -39,6 +39,6 @@ jobs:
 
     - name: Run server and integration tests
       run: |
-        python httpd -w 4 -r ./http-test-suite
+        python httpd.py -w 4 -r ./http-test-suite
         cd http-test-suite
         python httptest.py
